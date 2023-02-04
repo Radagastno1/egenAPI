@@ -1,0 +1,8 @@
+Skapa ett nytt C# .NET Core Web API-projekt i Visual Studio Code CHECK
+Konfigurera Entity Framework Core och SQLite som databas för projektet CHECK
+Skapa modellklasser för data som ska lagras i databasen CHECK
+Skapa en DbContext-klass för att sammankoppla modellklasser och databas CHECK
+Skapa en Controller-klass för att hantera inkommande HTTP-begär anden till din web API CHECK
+Implementera metoder för att hämta och lagra data i databasen med hjälp av Entity Framework Core och LINQ CHECK
+Testa din web API genom att skicka HTTP-begär anden från en klient, till exempel med hjälp av Postman.
+Genom att följa dessa steg lär du dig grunderna i att skapa en C# .NET Core Web API-lösning med Visual Studio Code, samt att använda Entity Framework Core och SQLite som databas.
