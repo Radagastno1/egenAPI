@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using Dapper;
 
-[Route("api/facts]")]
+[Route("api/facts")]
 [ApiController]
 public class FactsController : ControllerBase
 {
