@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using Dapper;
 
-[Route("api/facts")]
+[Route("api/facts]")]
 [ApiController]
 public class FactsController : ControllerBase
 {
@@ -19,16 +19,15 @@ public class FactsController : ControllerBase
         {
             // Retrieve all facts from the database 
             List<int> ids = new();
-            using (MySqlConnection con = new("connectionstring här"))
+            using (MySqlConnection con = new("Server=localhost;Database=factsdb;User=root;Password=;"))
             {
                 string query = "SELECT id FROM facts;";
                 ids = con.Query<int>(query).ToList();
             }
-
             Random random = new();
             int randomNr = random.Next(0, ids.Count);
             Fact fact = new();
-            using(MySqlConnection con2 = new("connectionstring"))
+            using(MySqlConnection con2 = new("Server=localhost;Database=factsdb;User=root;Password=;"))
             {
                 string query = "SELECT id, description, source, date_added as 'dateadded' " + 
                 $"FROM facts WHERE id = {randomNr};";
