@@ -5,13 +5,13 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         // Add services to the container.
-        
+
         var config = builder.Configuration;
 
         builder.Services.AddControllers();
-        
-        builder.Services.AddDbContext<MyDbContext>(options =>
-        options.UseSqlite(config.GetConnectionString("DefaultConnection")));
+
+        // builder.Services.AddDbContext<MyDbContext>(options =>
+        // // options.UseSqlite(config.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

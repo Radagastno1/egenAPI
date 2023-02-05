@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
@@ -15,6 +16,7 @@
     </PackageReference>
     <PackageReference Include="microsoft.entityframeworkcore.relational" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.2" />
+    <PackageReference Include="mysqlconnector" Version="2.2.5" />
     <PackageReference Include="newtonsoft.json" Version="13.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
