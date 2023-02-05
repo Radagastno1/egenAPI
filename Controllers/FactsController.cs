@@ -13,6 +13,41 @@ public class FactsController : ControllerBase
     }
     // GET: api/Facts
     [HttpGet]
+    // public async Task<ActionResult<IEnumerable<Fact>>> GetFacts()
+    // {
+    //     try
+    //     {
+    //         // Retrieve all facts from the database 
+    //         List<int> ids = new();
+    //         using (MySqlConnection con = new("Server=localhost;Database=factsdb;User=root;Password=;"))
+    //         {
+    //             string query = "SELECT id FROM facts;";
+    //             ids = con.Query<int>(query).ToList();
+    //         }
+    //         Random random = new();
+    //         int randomNr = random.Next(0, ids.Count);
+    //         Fact fact = new();
+    //         using(MySqlConnection con2 = new("Server=localhost;Database=factsdb;User=root;Password=;"))
+    //         {
+    //             string query = "SELECT id, description, source, date_added as 'dateadded' " + 
+    //             $"FROM facts WHERE id = {randomNr};";
+    //             fact = con2.QuerySingle<Fact>(query);
+    //         }
+    //         // If there are no facts in the database, return a 404 Not Found response
+    //         if (fact == null)
+    //         {
+    //             return NotFound();
+    //         }
+    //         // Return a 200 OK response with the list of facts
+    //         return Ok(fact);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         _logger.LogError(ex, "An error occurred while processing the request.");
+    //         throw;
+    //     }
+
+    // }
     public async Task<ActionResult<IEnumerable<Fact>>> GetFacts()
     {
         try
@@ -24,19 +59,20 @@ public class FactsController : ControllerBase
                 string query = "SELECT id FROM facts;";
                 ids = con.Query<int>(query).ToList();
             }
+
+            if (!ids.Any())
+            {
+                return NotFound();
+            }
+
             Random random = new();
             int randomNr = random.Next(0, ids.Count);
             Fact fact = new();
-            using(MySqlConnection con2 = new("Server=localhost;Database=factsdb;User=root;Password=;"))
+            using (MySqlConnection con2 = new("Server=localhost;Database=factsdb;User=root;Password=;"))
             {
-                string query = "SELECT id, description, source, date_added as 'dateadded' " + 
+                string query = "SELECT id, description, source, date_added as 'dateadded' " +
                 $"FROM facts WHERE id = {randomNr};";
                 fact = con2.QuerySingle<Fact>(query);
-            }
-            // If there are no facts in the database, return a 404 Not Found response
-            if (fact == null)
-            {
-                return NotFound();
             }
             // Return a 200 OK response with the list of facts
             return Ok(fact);
@@ -48,6 +84,7 @@ public class FactsController : ControllerBase
         }
 
     }
+
     // //GET : api/Facts/id
     // [HttpGet("{id}")]
     // public async Task<ActionResult<Fact>> GetFact(int id)
