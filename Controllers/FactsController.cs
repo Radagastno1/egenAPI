@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
-[Route("api/[controller]")]
+[Route("api/facts")]
 [ApiController]
 public class FactsController : ControllerBase
 {
