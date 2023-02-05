@@ -68,12 +68,16 @@ public class FactsController : ControllerBase
             Random random = new();
             int randomNr = random.Next(0, ids.Count);
             Fact fact = new();
-            using (MySqlConnection con2 = new("Server=localhost;Database=factsdb;User=root;Password=;"))
+            do
             {
-                string query = "SELECT id, description, source, date_added as 'dateadded' " +
-                $"FROM facts WHERE id = {randomNr};";
-                fact = con2.QuerySingle<Fact>(query);
-            }
+                using (MySqlConnection con2 = new("Server=localhost;Database=factsdb;User=root;Password=;"))
+                {
+                    string query = "SELECT id, description, source, date_added as 'dateadded' " +
+                    $"FROM facts WHERE id = {randomNr};";
+                    fact = con2.QuerySingle<Fact>(query);
+                }
+            }while(fact.Id < 1);
+
             // Return a 200 OK response with the list of facts
             return Ok(fact);
         }
