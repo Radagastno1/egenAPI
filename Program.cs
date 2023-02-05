@@ -9,6 +9,7 @@ internal class Program
         var config = builder.Configuration;
 
         builder.Services.AddControllers();
+        
         builder.Services.AddDbContext<MyDbContext>(options =>
         options.UseSqlite(config.GetConnectionString("DefaultConnection")));
 
